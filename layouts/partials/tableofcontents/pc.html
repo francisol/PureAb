@@ -1,0 +1,15 @@
+    <!-- 大屏幕下的固定目录 -->
+    {{ if .TableOfContents }}
+    <div class="hidden lg:block">
+        <div class="sticky top-4 overflow-y-auto max-h-[calc(100vh-2rem)]">
+            <div class="card bg-base-200">
+                <div class="card-body">
+                    <h2 class="card-title">目录</h2>
+                    <div class="toc-content">
+                        {{ .TableOfContents }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{ end }}

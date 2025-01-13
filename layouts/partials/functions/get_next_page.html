@@ -1,0 +1,28 @@
+
+{{ $next := slice}}
+{{$current := .}}
+{{$pages := partial "functions/order_sections.html" .Parent.Pages }}
+
+{{/*  {{ with partial "functions/order_sections.html" . }}  */}}
+{{ with partial "functions/order_sections.html" $current.Pages }}
+    {{ $next = index  . 0 }}
+{{else}}
+    {{$flag := false}}
+    {{ range $pages }}
+        {{ if eq .RelPermalink $current.RelPermalink }}
+            {{$flag = true}}
+            {{continue}}
+        {{ end }}
+        {{ if $flag }}
+            {{ $next = . }}
+            {{break}}
+        {{ end }}
+    {{ end }}
+    {{ with $next }}
+    
+    {{ else }}
+        {{ $next = partial "functions/get_next_page_on_parent.html" $current}}
+    {{ end }}
+{{end}}
+
+{{return $next }}

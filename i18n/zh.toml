@@ -1,0 +1,8 @@
+wordCount = '{{ . }} 字'
+readMore= '阅读全文'
+readingTime ='{{.}}分钟'
+latestAll ='最新发布'
+latest ='最新'
+
+[type]
+posts= '文章'

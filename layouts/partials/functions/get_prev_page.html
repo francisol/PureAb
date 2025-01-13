@@ -1,0 +1,21 @@
+
+{{$prev := slice}}
+{{$current := .}}
+{{$pages := partial "functions/order_sections.html" .Parent.Pages }}
+
+{{ if  not .Parent.Parent.IsHome }}
+    {{$tmp := .Parent}}
+    {{ range $pages }}
+        {{ if eq .RelPermalink $current.RelPermalink }}
+            {{break}}
+        {{ end }}
+        {{$tmp = . }}
+    {{ end }}
+    {{ if not (eq $tmp.RelPermalink $current.Parent.RelPermalink) }}
+        {{ with partial "functions/order_sections.html" $tmp.Pages }}
+            {{ $tmp = index (last 1 .) 0}}
+        {{ end }}
+    {{ end }}
+    {{$prev = $tmp }}
+{{end}}
+{{ return  $prev }}

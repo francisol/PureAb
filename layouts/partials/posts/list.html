@@ -1,0 +1,48 @@
+<div class="card bg-base-100 shadow-xl hover:shadow-2xl transition-shadow">
+    <div class="card-body p-6">
+        <!-- 文章标题 -->
+        <h2 class="card-title">
+            <a href="{{ .RelPermalink }}" class="hover:text-neutral">{{ .Title }}</a>
+        </h2>
+
+        <!-- 文章元信息 -->
+        <div class="flex flex-wrap gap-4 text-sm text-base-content/70">
+            <!-- 发布日期 -->
+            <div class="flex items-center gap-1">
+                {{ partial "icons/icon" (dict "vendor" "fas" "name" "calendar") }}
+                <span>{{ .Date.Format "2006-01-02" }}</span>
+            </div>
+
+            <!-- 作者信息 -->
+            {{ with .Params.author }}
+            <div class="flex items-center gap-1">
+                {{ partial "icons/icon" (dict "vendor" "fas" "name" "user") }}
+                <span>{{ . }}</span>
+            </div>
+            {{ end }}
+
+            <!-- 阅读时间 -->
+            <div class="flex items-center gap-1">
+                {{ partial "icons/icon" (dict "vendor" "fas" "name" "clock") }}
+                <span>{{ T "readingTime" .ReadingTime }}</span>
+            </div>
+
+            <!-- 字数统计 -->
+            <div class="flex items-center gap-1">
+                {{ partial "icons/icon" (dict "vendor" "fas" "name" "file") }}
+                {{ T "wordCount" .WordCount }}
+            </div>
+        </div>
+        <!-- 文章摘要 -->
+        <div class="mt-2 text-base-content/80 line-clamp-2">
+            <p class="line-clamp-2">{{ .Summary }}</p>
+        </div>
+
+        <!-- 阅读更多按钮 -->
+        <div class="card-actions justify-end mt-2">
+            <a href="{{ .RelPermalink }}" class="btn btn-neutral  btn-sm">
+                {{ T "readMore"}}
+            </a>
+        </div>
+    </div>
+</div>

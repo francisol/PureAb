@@ -1,0 +1,48 @@
+{{ define "main" }}
+<!-- 使用 grid 布局来实现大屏幕上的侧边目录 -->
+<div class="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-8 max-w-7xl mx-auto px-4">
+    <!-- 文章主体内容 -->
+    <article class="prose lg:prose-xl">
+        <!-- 标题部分 -->
+        <div class="mb-8">
+            <h1 class="text-4xl font-bold mb-2">{{ .Title }}</h1>
+            
+            <!-- 文章元信息 -->
+            <div class="flex flex-wrap gap-4 text-sm mb-2">
+                <div class="flex items-center gap-2">
+                        {{ partial "icons/icon" (dict  "vendor" "fas"  "name" "calendar") }}
+                    <div>{{ .Date.Format "2006-01-02" }}</div>
+                </div>
+                
+                {{ with .Params.author }}
+                <div class="flex items-center gap-2">
+                    {{ partial "icons/icon" (dict  "vendor" "fas"  "name" "user") }}
+                    {{ . }}
+                </div>
+                {{ end }}
+                
+                <div class="flex items-center gap-2">
+                    {{ partial "icons/icon" (dict  "vendor" "fas"  "name" "clock") }}
+                    {{T "readingTime" .ReadingTime }} 
+                </div>
+                
+                <div class="flex items-center gap-2">
+                    {{ partial "icons/icon" (dict  "vendor" "fas"  "name" "file") }}
+                    {{ T "wordCount" .WordCount }}
+                </div>
+            </div>
+        </div>
+        <div class="divider"></div>
+        <!-- 小屏幕下的可折叠目录 -->
+        {{ partial "tableofcontents/moblie.html" . }}
+
+        <!-- 文章内容 -->
+        <div class="article-content">
+            {{ .Content }}
+        </div>
+        {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }}
+    </article>
+    {{ partial "tableofcontents/pc.html" . }}
+
+</div>
+{{ end }}

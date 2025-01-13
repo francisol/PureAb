@@ -1,0 +1,23 @@
+{{- $root := .root -}}
+{{- $current :=.current -}}
+{{ with  partial "functions/order_sections.html" $root.Pages}}
+{{ if $root.Parent.Parent.IsHome }}
+<ul class="menu">
+{{ else }}
+<ul class="">
+{{ end }}
+
+    {{ range . }}
+    <li > 
+    {{ if eq $current.RelPermalink .RelPermalink }}
+        
+                <a style="background-color: transparent;" class="font-semibold  hover:bg-transparent hover:underline" href="{{.RelPermalink}}">{{.Title}}</a>
+       
+    {{else}}
+        <a tyle="background-color: transparent;" class="font-normal  hover:bg-transparent hover:underline" href="{{.RelPermalink}}">{{.Title}}</a>
+    {{ end }}
+    {{ partial "books/menu.html" (dict "root" . "current" $current) }}
+</li>
+    {{ end }}
+</ul>
+{{ end }}

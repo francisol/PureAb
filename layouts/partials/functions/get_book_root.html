@@ -1,0 +1,6 @@
+{{ $root :=.}}
+{{ if .Parent.Parent.IsHome }}
+{{ else }}
+    {{$root =  partial "functions/get_book_root.html" .Parent }}
+{{ end }}
+{{ return $root }}

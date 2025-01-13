@@ -1,0 +1,32 @@
+{{ if .IsTranslated }}
+
+{{$page := . }}
+<div class="dropdown dropdown-bottom dropdown-end h-full">
+
+  <div class="navbar-center h-full">
+    <ul class="menu menu-horizontal px-1 text-lg h-full">
+      <li>
+        <details>
+          <summary class="h-12 flex items-center"><i class="fa-solid fa-globe"></i></summary>
+          <ul class="bg-base-100 rounded-t-none p-2 absolute right-0 space-y-1 ">
+            {{ range .AllTranslations }}
+            {{- $attrs := dict "href" .RelPermalink }}
+            {{- if eq $page.Lang .Language.Lang }}
+            {{- $attrs = merge $attrs (dict "class" "active" "aria-current" "page") }}
+            {{- end }}
+            <li>
+              <a      {{- range $k, $v := $attrs }}
+              {{- with $v }}
+                {{- printf " %s=%q" $k $v | safeHTMLAttr }}
+              {{- end }}
+            {{- end -}}>{{ .Language.LanguageName }}</a>
+            </li>
+            {{ end }}
+          </ul>
+        </details>
+      </li>
+    </ul>
+  </div>
+</div>
+
+{{ end }}

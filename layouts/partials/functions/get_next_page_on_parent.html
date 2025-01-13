@@ -1,0 +1,34 @@
+
+{{ $next := slice}}
+{{$current := .}}
+{{ $parent:= .Parent}}
+{{ if not .Parent.IsHome }}
+   
+
+
+{{ with .Parent.Pages }}
+    {{ with  partial "functions/order_sections.html" . }}
+        {{$pages :=. }}
+        {{$flag := false}}
+        {{ range $pages }}
+            {{ if eq .RelPermalink $current.RelPermalink }}
+            {{$flag = true}}
+                {{continue}}
+            {{ end }}
+            {{ if $flag }}
+                {{ $next = . }}
+                {{break}}
+            {{ end }}
+        {{ end }}
+    {{ end }}
+    {{ with $next }}
+    
+    {{ else }}
+        {{ $next = partial "functions/get_next_page_on_parent.html" $parent}}
+    {{ end }}
+{{ end }}
+
+{{ end }}
+
+
+{{return $next }}

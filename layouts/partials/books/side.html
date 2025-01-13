@@ -1,0 +1,10 @@
+
+{{$root :=  partial "functions/get_book_root.html" . }}
+<div class="py-4 menu-side">
+    <div class="px-6">
+        <a href="{{$root.RelPermalink}}">{{$root.Title}}</a>
+    </div>
+    <div style="height: 0; margin-bottom:0" class="divider"></div>
+    {{ partial "books/menu.html" (dict "root" $root "current" .) }}
+</div>
+

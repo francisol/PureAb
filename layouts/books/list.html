@@ -1,0 +1,10 @@
+{{ define "main" }}
+  
+{{ if .Parent.IsHome }}
+  {{ partial "books/list.html" . }}
+{{ else }}
+  {{ partial "books/layout.html" . }}
+  
+{{ end }}
+
+{{ end }}

@@ -1,0 +1,18 @@
+{{ $count := or (.Get "count") 5 }}
+{{ $pages := site.RegularPages}}
+{{$title := T "latestAll" }}
+{{ with .Get "type" }}
+{{$pages = where $pages "Type" . }}
+{{ end }}
+{{ with .Get "bydate" }}
+{{$pages = $pages.ByDate.Reverse }}
+{{ end }}
+<div>
+    <h1 class="text-4xl font-bold mb-8">{{ $title }}</h1>
+    <div class="space-y-5">
+        {{ range $pages.Limit $count }}
+        {{ partial "posts/list.html" . }}
+        {{ end }}
+    </div>
+
+</div>

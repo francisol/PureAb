@@ -1,0 +1,58 @@
+<!-- site-intro.html -->
+<div class="card bg-base-200 mb-10">
+    <div class="card-body">
+        <!-- Logo 和标题区域 -->
+        <div class="flex items-center gap-4 mb-4">
+            {{ with .Get "logo" }}
+            <div class="avatar">
+                <div class="w-20 rounded">
+                    <img src="{{ . }}" alt="Site Logo" class="w-16 h-16 object-contain" />
+                </div>
+            </div>
+            {{ end }}
+            <div>
+                <h1 class="text-3xl font-bold">
+                    {{ .Get "title" }}
+                </h1>
+                <p class="text-base-content/70">
+                    {{ .Get "description" }}
+                </p>
+            </div>
+        </div>
+
+        <!-- 知识领域 -->
+        <div class="space-y-3 mt-6">
+            <h2 class="text-xl font-semibold">内容分类</h2>
+            <div class="flex flex-wrap gap-2">
+                {{ $categories := split (.Get "categories") "," }}
+                {{ range $category := $categories }}
+                <div class="badge badge-lg badge-primary">{{ $category }}</div>
+                {{ end }}
+            </div>
+        </div>
+
+        <!-- 学习资源 -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-6">
+            {{ with .Get "articles" }}
+            <div class="stat bg-base-100 rounded-box">
+                <div class="stat-title">文章数量</div>
+                <div class="stat-value text-primary">{{ . }}+</div>
+            </div>
+            {{ end }}
+
+            {{ with .Get "topics" }}
+            <div class="stat bg-base-100 rounded-box">
+                <div class="stat-title">知识主题</div>
+                <div class="stat-value text-secondary">{{ . }}+</div>
+            </div>
+            {{ end }}
+
+            {{ with .Get "resources" }}
+            <div class="stat bg-base-100 rounded-box">
+                <div class="stat-title">学习资源</div>
+                <div class="stat-value text-accent">{{ . }}+</div>
+            </div>
+            {{ end }}
+        </div>
+    </div>
+</div>
