@@ -33,7 +33,7 @@
   },
   "license": "ISC",
   "main": "index.js",
-  "name": "lctk",
+  "name": "pure-ab",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
