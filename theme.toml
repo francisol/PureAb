@@ -1,10 +1,10 @@
 name = 'PureAb'
 license = 'MIT'
-licenselink = 'https://github.com/owner/repo/LICENSE'
+licenselink = 'https://github.com/francisol/PureAb/LICENSE'
 description = 'Theme description'
 
 # The home page of the theme, where the source can be found
-homepage = 'https://github.com/owner/repo'
+homepage = 'https://github.com/francisol/PureAb'
 
 # If you have a running demo of the theme
 demosite = 'https://owner.github.io/repo'
@@ -14,19 +14,19 @@ tags = ['blog', 'company']
 features = ['some', 'awesome', 'features']
 
 # If the theme has multiple authors
-authors = [
-  {name = 'Name of author', homepage = 'Website of author'},
-  {name = 'Name of author', homepage = 'Website of author'}
-]
+# authors = [
+#   {name = 'francisol', homepage = 'Website of author'},
+#   {name = 'Name of author', homepage = 'Website of author'}
+# ]
 
 # If the theme has a single author
 [author]
-  name = 'Your name'
-  homepage = 'Your website'
+  name = 'francisol'
+  homepage = 'https://github.com/francisol/'
 
 # If porting an existing theme
 [original]
   author = 'Name of original author'
   homepage = 'Website of original author'
-  repo = 'https://github.com/owner/repo'
+  repo = 'https://github.com/francisol/PureAb'
 
