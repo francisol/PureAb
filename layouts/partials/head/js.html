@@ -1,20 +1,31 @@
 {{- with resources.Get "js/main.js" }}
-  {{- if eq hugo.Environment "development" }}
-    {{- with . | js.Build }}
-      <script src="{{ .RelPermalink }}"></script>
-    {{- end }}
-  {{- else }}
-    {{- $opts := dict "minify" true }}
-    {{- with . | js.Build $opts | fingerprint }}
-      <script src="{{ .RelPermalink }}" integrity="{{- .Data.Integrity }}" crossorigin="anonymous"></script>
-    {{- end }}
-  {{- end }}
+{{- if eq hugo.Environment "development" }}
+{{- with . | js.Build }}
+<script src="{{ .RelPermalink }}"></script>
+{{- end }}
+{{- else }}
+{{- $opts := dict "minify" true }}
+{{- with . | js.Build $opts | fingerprint }}
+<script src="{{ .RelPermalink }}" integrity="{{- .Data.Integrity }}" crossorigin="anonymous"></script>
+{{- end }}
+{{- end }}
+{{- end }}
+{{$js := slice (resources.Get "js/bundle/code-copy.js") }}
+{{ with site.Params.comment }}
+{{ if eq .name "giscus" }}
+{{$js = $js | append (resources.Get "js/bundle/giscus.js") }}
+{{ end }}
+{{ end }}
+
+{{ with $js | resources.Concat "js/bundle.js" }}
+
+{{- if eq hugo.Environment "development" }}
+<script src="{{ .RelPermalink }}"></script>
+{{- else }}
+{{ with . | minify }}
+<script src="{{ .RelPermalink }}" integrity="{{- .Data.Integrity }}" crossorigin="anonymous"></script>
+
+{{ end }}
 {{- end }}
 
-{{- with resources.Get "js/copy.js" }}
-  {{- if eq hugo.Environment "development" }}
-      <script src="{{ .RelPermalink }}"></script>
-  {{- else }}
-      <script src="{{ .RelPermalink }}" integrity="{{- .Data.Integrity }}" crossorigin="anonymous"></script>
-  {{- end }}
-{{- end }}
+{{ end }}

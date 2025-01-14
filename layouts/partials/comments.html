@@ -1,0 +1,5 @@
+{{ with site.Params.comment }}
+  {{ if eq .name "giscus" }}
+    {{ partial "comments/giscus.html" . }}
+  {{ end }}
+{{ end }}
