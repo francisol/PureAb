@@ -1,5 +1,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
+<meta name='keywords' content="{{ delimit .Keywords ", " }}">
+
+<meta property="og:title" content="{{ .Title }} - {{ .Site.Title }}">
+<meta name="apple-mobile-web-app-title" content="{{ .Title }} - {{ .Site.Title }}">
+
+{{ $realDescription := or .Description .Site.Params.description}}
+<meta name="description" content="{{ $realDescription }}">
+<meta property="og:description" content="{{ $realDescription }}">
+
 <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ printf "%s | %s" .Title site.Title }}{{ end }}</title>
 {{ partialCached "head/css.html" . }}
 {{ partialCached "head/js.html" . }}
