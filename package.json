@@ -3,7 +3,8 @@
   "comments": {
     "dependencies": {
       "anchor-js": "project",
-      "postcss-cli": "project"
+      "postcss-cli": "project",
+      "theme-change": "project"
     },
     "devDependencies": {
       "@tailwindcss/typography": "project",
@@ -15,7 +16,8 @@
   },
   "dependencies": {
     "anchor-js": "^5.0.0",
-    "postcss-cli": "^11.0.0"
+    "postcss-cli": "^11.0.0",
+    "theme-change": "^2.5.0"
   },
   "description": "## Features",
   "devDependencies": {
