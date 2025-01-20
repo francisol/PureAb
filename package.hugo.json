@@ -2,6 +2,7 @@
   "author": "",
   "dependencies": {
     "anchor-js": "^5.0.0",
+    "mermaid": "^11.4.1",
     "postcss-cli": "^11.0.0",
     "theme-change": "^2.5.0"
   },
