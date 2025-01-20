@@ -2,9 +2,9 @@
 {{ $next := slice}}
 {{$current := .}}
 {{ $parent:= .Parent}}
+
 {{ if not .Parent.IsHome }}
    
-
 
 {{ with .Parent.Pages }}
     {{ with  partial "functions/order_sections.html" . }}

@@ -7,6 +7,8 @@
 {{ with partial "functions/order_sections.html" $current.Pages }}
     {{ $next = index  . 0 }}
 {{else}}
+{{ if not .Parent.Parent.IsHome  }}
+    
     {{$flag := false}}
     {{ range $pages }}
         {{ if eq .RelPermalink $current.RelPermalink }}
@@ -23,6 +25,7 @@
     {{ else }}
         {{ $next = partial "functions/get_next_page_on_parent.html" $current}}
     {{ end }}
+{{ end }}
 {{end}}
 
 {{return $next }}
