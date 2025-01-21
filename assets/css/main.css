@@ -26,7 +26,10 @@ html,body{
     opacity: 1;
   }
   
+  .prose :where(p):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
+    text-align: justify;
 
+}
 @import './tableofcontent.css'
 
 
