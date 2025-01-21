@@ -1,4 +1,9 @@
 /* 目录样式优化 */
+
+.toc-content{
+    padding-left: 0.75rem;
+}
+
 .toc-content ul {
     list-style-type: none;
     padding-left: 0;
