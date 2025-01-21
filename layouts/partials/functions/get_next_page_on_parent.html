@@ -3,7 +3,7 @@
 {{$current := .}}
 {{ $parent:= .Parent}}
 
-{{ if not .Parent.IsHome }}
+{{ if not .Parent.Parent.IsHome }}
    
 
 {{ with .Parent.Pages }}
