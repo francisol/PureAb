@@ -58,3 +58,13 @@ path = "github.com/hugomods/icons/vendors/font-awesome"
   [[build.cachebusters]]
     source = "assets/.*\\.(.*)$"
     target = "$1"
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.extensions]
+      [markup.goldmark.extensions.passthrough]
+        enable = true
+        [markup.goldmark.extensions.passthrough.delimiters]
+          block = [['\[', '\]'], ['$$', '$$']]
+          inline = [['\(', '\)'],['$','$']]
+[params]
+  math = true
